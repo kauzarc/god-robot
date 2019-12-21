@@ -30,14 +30,14 @@ def receive_message():
 
                 message_text = message['message'].get('text')
                 if message_text:
-                    response_sent_text = get_message()
-                    send_message(recipient_id, message_text)
+                    response_sent_text = get_message(message_text)
+                    send_message(recipient_id, response_sent_text)
                 #if user sends us a GIF, photo,video, or any other non-text item
 
-                message_nontext = message['message'].get('attachments')
-                if message_nontext:
-                    response_sent_nontext = get_message()
-                    send_message(recipient_id, response_sent_nontext)
+                # message_nontext = message['message'].get('attachments')
+                # if message_nontext:
+                #     response_sent_nontext = get_message()
+                #     send_message(recipient_id, response_sent_nontext)
     return "Message Processed"
 
 
@@ -50,10 +50,12 @@ def verify_fb_token(token_sent):
 
 
 #chooses a random message to send to the user
-def get_message():
-    sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
-    # return selected item to the user
-    return random.choice(sample_responses)
+def get_message(text):
+    if "@God-robot" in text:
+        sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
+        # return selected item to the user
+        return random.choice(sample_responses)
+    return ""
 
 #uses PyMessenger to send response to user
 def send_message(recipient_id, response):
