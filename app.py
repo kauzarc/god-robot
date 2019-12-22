@@ -48,7 +48,7 @@ def receive_message():
                         current_user.message_list.append(message_text)
 
                         response_sent_text = get_message(current_user)
-                        send_message(recipient_id, "hi")
+                        send_message(recipient_id, response_sent_text)
 
                     # if user sends us a GIF, photo,video, or any other non-text item
                     # message_nontext = message['message'].get('attachments')
