@@ -55,9 +55,11 @@ def verify_fb_token(token_sent):
 def get_message(text):
     if text[0:10] == "@God-robot":
         command = text[11:]
-        if command == "test":
+        if command == "help":
+            return help_command(text)
+        elif command == "test":
             return test_command(command)
-        if command[0:6] == "random":
+        elif command[0:6] == "random":
             return random_command(command[7:])
         else:
             return no_command(text[11:])
