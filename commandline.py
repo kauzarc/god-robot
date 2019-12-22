@@ -1,6 +1,5 @@
 import random
 
-
 def help_command(text):
     result = "HELP :\n"
     result += "\n"
@@ -21,4 +20,10 @@ def test_command(text):
 
 
 def random_command(text):
-    return "nique sa mere"
+    string = text[7:]
+    for letter in string:
+        if not letter in "0123456789":
+            return "non valid arg !"
+    
+    integer = int(string)
+    return str(random.randint(0, integer))
