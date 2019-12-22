@@ -57,6 +57,8 @@ def get_message(text):
         command = text[11:]
         if command == "test":
             return test_command(command)
+        if command[0:6] == "random":
+            return random_command(command[7:])
         else:
             return no_command(text[11:])
     return ""
