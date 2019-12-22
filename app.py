@@ -4,6 +4,8 @@ from flask import Flask, request
 from pymessenger.bot import Bot
 import os
 
+from commandline import *
+
 app = Flask(__name__)
 ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
 VERIFY_TOKEN = os.environ['VERIFY_TOKEN']
@@ -51,10 +53,12 @@ def verify_fb_token(token_sent):
 
 #chooses a random message to send to the user
 def get_message(text):
-    if "@God-robot" in text:
-        sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
-        # return selected item to the user
-        return random.choice(sample_responses)
+    if text[0:10] == "@God-robot":
+        command = text[11:]
+        if command == "test":
+            return test_command(command)
+        else:
+            return no_command(text[11:])
     return ""
 
 #uses PyMessenger to send response to user
