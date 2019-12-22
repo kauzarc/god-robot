@@ -15,17 +15,17 @@ def help_command(text):
 
 def log_command(text, file_name):
     result = ""
-    if text == "show":
+    if text[4:] == "show":
         f = open(file_name, "r")
         for line in f.readlines():
             result += line + "\n -------------------- \n"
         f.close()
 
-    elif text == "clear":
+    elif text[4:] == "clear":
         f = open(file_name, "w")
         f.write("")
         f.close()
-        
+
     return result
 
 def no_command(text):
