@@ -77,7 +77,7 @@ def get_message(user):
             return test_command(command)
         elif command[0:6] == "random":
             return random_command(command)
-        elif command[:2] == "say":
+        elif command[0:3] == "say":
             return say_command(command)
         else:
             return no_command(command)

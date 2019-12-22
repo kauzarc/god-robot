@@ -29,4 +29,4 @@ def random_command(text):
     return str(random.randint(0, integer))
 
 def say_command(text):
-    return text[3:]
+    return text[4:]
