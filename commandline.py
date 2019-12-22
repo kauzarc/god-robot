@@ -11,7 +11,10 @@ def help_command(text):
     result += "random : @arg an integer --> pick a random number between 0 and @arg\n"
     result += "\n"
     result += "say : @arg any string --> reapeat @arg\n"
+    result += "\n"
+    result += "eval : @arg a python line --> return the result of the python line\n"
     return result
+
 
 def log_command(text, file_name):
     result = ""
@@ -29,8 +32,9 @@ def log_command(text, file_name):
 
     return result
 
+
 def no_command(text):
-    return "Message invalide mother fucker !"
+    return "Message invalide mother fucker ! (try @bot help)"
 
 
 def test_command(text):
@@ -49,3 +53,7 @@ def random_command(text):
 
 def say_command(text):
     return text[4:]
+
+
+def eval_command(text):
+    return str(eval(text[5:]))

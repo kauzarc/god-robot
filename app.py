@@ -78,23 +78,31 @@ def get_message(user):
 
     if last_message[0:4] == "@bot":
         command = last_message[5:]
+
         if command == "help":
             return help_command(command)
+
         elif command[0:3] == "log":
             return log_command(command, log_file_name)
+
         elif command == "test":
             return test_command(command)
+
         elif command[0:6] == "random":
             return random_command(command)
+
         elif command[0:3] == "say":
             return say_command(command)
+
+        elif command[0:4] == "eval":
+            return eval_command(command)
+
         else:
             return no_command(command)
     return ""
 
+
 # uses PyMessenger to send response to user
-
-
 def send_message(recipient_id, response):
     # sends user the text message provided via input response parameter
     bot.send_text_message(recipient_id, response)
