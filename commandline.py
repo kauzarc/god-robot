@@ -13,6 +13,12 @@ def help_command(text):
     result += "say : @arg any string --> reapeat @arg\n"
     return result
 
+def log_command(text, file_name):
+    f = open(file_name, "r")
+    result = ""
+    for line in f.readlines():
+        result += line
+    return result
 
 def no_command(text):
     return "Message invalide mother fucker !"

@@ -8,6 +8,7 @@ from commandline import *
 from user import *
 
 users_list = []
+log_file_name = "log.txt"
 
 app = Flask(__name__)
 ACCESS_TOKEN = os.environ['ACCESS_TOKEN']
@@ -29,10 +30,16 @@ def receive_message():
         for event in output['entry']:
             messaging = event['messaging']
             for message in messaging:
+
                 if message.get('message'):
                     # Facebook Messenger ID for user so we know where to send response back to
                     recipient_id = message['sender']['id']
                     message_text = message['message'].get('text')
+
+                    log_file = open(log_file_name, "a")
+                    log = recipient_id + " " + message_text
+                    log_file.write(log)
+                    log_file.close()
 
                     current_user = None
 
@@ -73,6 +80,8 @@ def get_message(user):
         command = last_message[5:]
         if command == "help":
             return help_command(command)
+        elif command == "log":
+            return log_command(command, log_file_name)
         elif command == "test":
             return test_command(command)
         elif command[0:6] == "random":
