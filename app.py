@@ -33,36 +33,40 @@ def receive_message():
             for message in messaging:
 
                 if message.get('message'):
-                    # Facebook Messenger ID for user so we know where to send response back to
-                    recipient_id = message['sender']['id']
-                    message_text = message['message'].get('text')
 
-                    log_file = open(log_file_name, "a")
-                    log = recipient_id + " " + message_text + "\n"
-                    log_file.write(log)
-                    log_file.close()
+                    try:
+                        # Facebook Messenger ID for user so we know where to send response back to
+                        recipient_id = message['sender']['id']
+                        message_text = message['message'].get('text')
 
-                    current_user = None
+                        log_file = open(log_file_name, "a")
+                        log = recipient_id + " " + message_text + "\n"
+                        log_file.write(log)
+                        log_file.close()
 
-                    for user in users_list:
-                        if user.id == recipient_id:
-                            current_user = user
-                            break
-                    else:
-                        users_list.append(User(recipient_id))
-                        current_user = users_list[-1]
+                        current_user = None
 
-                    if message_text:
-                        current_user.message_list.append(message_text)
+                        for user in users_list:
+                            if user.id == recipient_id:
+                                current_user = user
+                                break
+                        else:
+                            users_list.append(User(recipient_id))
+                            current_user = users_list[-1]
 
-                        response_sent_text = get_message(current_user)
-                        send_message(recipient_id, response_sent_text)
+                        if message_text:
+                            current_user.message_list.append(message_text)
 
-                    # if user sends us a GIF, photo,video, or any other non-text item
-                    # message_nontext = message['message'].get('attachments')
-                    # if message_nontext:
-                    #     response_sent_nontext = get_message()
-                    #     send_message(recipient_id, response_sent_nontext)
+                            response_sent_text = get_message(current_user)
+                            send_message(recipient_id, response_sent_text)
+
+                        # if user sends us a GIF, photo,video, or any other non-text item
+                        # message_nontext = message['message'].get('attachments')
+                        # if message_nontext:
+                        #     response_sent_nontext = get_message()
+                        #     send_message(recipient_id, response_sent_nontext)
+                    except Exception as e:
+                        send_message(3419579411447787 , str(e))
     return "Message Processed"
 
 
