@@ -17,7 +17,7 @@ def log_command(text, file_name):
     f = open(file_name, "r")
     result = ""
     for line in f.readlines():
-        result += line
+        result += line + "\n -------------------- \n"
     return result
 
 def no_command(text):
