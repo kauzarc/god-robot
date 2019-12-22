@@ -60,9 +60,9 @@ def get_message(text):
         elif command == "test":
             return test_command(command)
         elif command[0:6] == "random":
-            return random_command(command[7:])
+            return random_command(command)
         else:
-            return no_command(text[11:])
+            return no_command(command)
     return ""
 
 #uses PyMessenger to send response to user
