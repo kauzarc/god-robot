@@ -51,10 +51,9 @@ def verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
-#chooses a random message to send to the user
 def get_message(text):
-    if text[0:10] == "@God-robot":
-        command = text[11:]
+    if text[0:4] == "@bot":
+        command = text[5:]
         if command == "help":
             return help_command(text)
         elif command == "test":
