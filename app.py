@@ -34,20 +34,20 @@ def receive_message():
                     recipient_id = message['sender']['id']
                     message_text = message['message'].get('text')
 
-                    # current_user = None
+                    current_user = None
 
-                    # for user in users_list:
-                    #     if user.id == recipient_id:
-                    #         current_user = user
-                    #         break
-                    # else:
-                    #     users_list.append(User(recipient_id))
-                    #     current_user = users_list[-1]
+                    for user in users_list:
+                        if user.id == recipient_id:
+                            current_user = user
+                            break
+                    else:
+                        users_list.append(User(recipient_id))
+                        current_user = users_list[-1]
 
                     if message_text:
-                        # current_user.message_list.append(message_text)
+                        current_user.message_list.append(message_text)
 
-                        # response_sent_text = get_message(current_user)
+                        response_sent_text = get_message(current_user)
                         send_message(recipient_id, "hi")
 
                     # if user sends us a GIF, photo,video, or any other non-text item
