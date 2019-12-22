@@ -80,26 +80,31 @@ def get_message(user):
     if last_message[0:4] == "@bot":
         command = last_message[5:]
 
-        if command == "help":
-            return help_command(command)
+        try:
 
-        elif command[0:3] == "log":
-            return log_command(command, log_file_name)
+            if command == "help":
+                return help_command(command)
 
-        elif command == "test":
-            return test_command(command)
+            elif command[0:3] == "log":
+                return log_command(command, log_file_name)
 
-        elif command[0:6] == "random":
-            return random_command(command)
+            elif command == "test":
+                return test_command(command)
 
-        elif command[0:3] == "say":
-            return say_command(command)
+            elif command[0:6] == "random":
+                return random_command(command)
 
-        elif command[0:4] == "eval":
-            return eval_command(command)
+            elif command[0:3] == "say":
+                return say_command(command)
 
-        else:
-            return no_command(command)
+            elif command[0:4] == "eval":
+                return eval_command(command)
+
+            else:
+                return no_command(command)
+
+        except Exception as e:
+            return str(e)
     return ""
 
 
