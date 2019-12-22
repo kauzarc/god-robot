@@ -15,4 +15,6 @@ def test_command(text):
     return "This command work !"
 
 def random_command(text):
-    return str(random.randint(0, int(text[7:])))
+    if int(text[7:]):
+        return str(random.randint(0, int(text[7:])))
+    return ""
