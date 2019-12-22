@@ -80,7 +80,7 @@ def get_message(user):
         command = last_message[5:]
         if command == "help":
             return help_command(command)
-        elif command == "log":
+        elif command[0:3] == "log":
             return log_command(command, log_file_name)
         elif command == "test":
             return test_command(command)
