@@ -67,7 +67,7 @@ def receive_message():
                         #     send_message(recipient_id, response_sent_nontext)
                     except Exception as e:
                         f = open(log_file_name, "a")
-                        f.write("\n" + e + "\n")
+                        f.write("\n" + str(e) + "\n")
     return "Message Processed"
 
 
