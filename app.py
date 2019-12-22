@@ -72,11 +72,13 @@ def get_message(user):
     if last_message[0:4] == "@bot":
         command = last_message[5:]
         if command == "help":
-            return help_command(last_message)
+            return help_command(command)
         elif command == "test":
             return test_command(command)
         elif command[0:6] == "random":
             return random_command(command)
+        elif command[:2] == "say":
+            return say_command(command)
         else:
             return no_command(command)
     return ""

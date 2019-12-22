@@ -27,3 +27,6 @@ def random_command(text):
     
     integer = int(string)
     return str(random.randint(0, integer))
+
+def say_command(text):
+    return text[3:]
