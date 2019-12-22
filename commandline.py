@@ -1,5 +1,6 @@
 import random
 
+
 def help_command(text):
     result = "HELP :\n"
     result += "\n"
@@ -8,6 +9,8 @@ def help_command(text):
     result += "test : --> a testing command\n"
     result += "\n"
     result += "random : @arg an integer --> pick a random number between 0 and @arg\n"
+    result += "\n"
+    result += "say : @arg any string --> reapeat @arg\n"
     return result
 
 
@@ -24,9 +27,10 @@ def random_command(text):
     for letter in string:
         if not letter in "0123456789":
             return "non valid arg !"
-    
+
     integer = int(string)
     return str(random.randint(0, integer))
+
 
 def say_command(text):
     return text[4:]
