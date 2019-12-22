@@ -56,4 +56,8 @@ def say_command(text):
 
 
 def eval_command(text):
-    return str(eval(text[5:]))
+    try:
+        return str(eval(text[5:]))
+    except Exception as e:
+        return str(e)
+
