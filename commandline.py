@@ -24,6 +24,8 @@ def log_command(text, file_name):
         for line in f.readlines():
             result += line + "\n -------------------- \n"
         f.close()
+        if len(result) > 500:
+            result = result[:500]
 
     elif text[4:] == "clear":
         f = open(file_name, "w")
