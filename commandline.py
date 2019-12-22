@@ -1,4 +1,5 @@
 import random
+from math import *
 
 
 def help_command(text):
