@@ -25,6 +25,7 @@ def log_command(text, file_name):
         f = open(file_name, "w")
         f.write("")
         f.close()
+        result += "done !"
 
     return result
 
