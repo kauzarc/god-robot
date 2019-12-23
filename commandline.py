@@ -1,4 +1,6 @@
 import random
+import multiprocessing as mp
+import time
 from math import *
 
 
@@ -59,8 +61,11 @@ def say_command(text):
 
 
 def eval_command(text):
-    try:
-        return str(eval(text[5:]))
-    except Exception as e:
-        return str(e)
+    if text != "eval 123456789**123456789":
+        try:
+            return str(eval(text[5:]))
+        except Exception as e:
+            return str(e)
+    else:
+        return "putain"
 
