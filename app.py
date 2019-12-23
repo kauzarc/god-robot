@@ -39,8 +39,6 @@ def receive_message():
                         recipient_id = message['sender']['id']
                         message_text = message['message'].get('text')
 
-                        print(message_text)
-
                         log_file = open(log_file_name, "a")
                         log = recipient_id + " " + message_text + "\n"
                         log_file.write(log)
